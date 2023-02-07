@@ -1,0 +1,41 @@
+-- Table: public.blogs
+
+-- DROP TABLE IF EXISTS public.blogs;
+
+CREATE TABLE IF NOT EXISTS public.blogs
+(
+    id bigint NOT NULL DEFAULT nextval('blogs_id_seq'::regclass),
+    title "char" NOT NULL,
+    description "char",
+    tags "char"[],
+    created_at date NOT NULL,
+    deleted_at date,
+    updated_at date,
+    CONSTRAINT blogs_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.blogs
+    OWNER to postgres;
+
+
+-- Table: public.users
+
+-- DROP TABLE IF EXISTS public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id bigint NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    name "char" NOT NULL,
+    password "char" NOT NULL,
+    created_at date NOT NULL,
+    updated_at date,
+    deleted_at date,
+    CONSTRAINT users_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;
